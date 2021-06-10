@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- funcoes principais -->
+     <script  src='js/json_ fetch.js'></script>
+     <!-- função de contrução dos items -->
+    <script  src='js/json_bPesquisa.js'></script>
+    <!-- função de recebimento de valor no input -->
+    <script  src='js/input_v.js'></script>
+    
+    <script src="js/conteudo.js"></script>
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <style> 
+        @import 'css/pesquisa.css';
+    </style>
+</head>
+<body>
+    <div class="pesquisa">
+        <input type="text" name='pesquisa' id="pesquisa" placeholder="Pesquisar" onkeyup="c_pesquisa(`result_keys`,this.id)">
+        <button  onclick="c_conteudo()" >
+        <img src="icons/search.svg" style="width: 10px; height:auto">
+        </button>
+        <span class="pesquisa_out" id="result_keys" >
+            
+        </span>
+        
+    </div>
+
+    <div class="conteudo" id='conteudo'>
+
+    </div>
+
+</body>
+<script type='text/javascript'>
+
+    /*funçao chamada,  chama a funcao real a ser chamada 
+    com os parametros e variaveis nescessarias apenas a ela
+    */
+   //chama a função json fetch com local do servidor, posicao de escrita  e valor
+   //pos id do <ul> , input id do input a ser usado
+    function c_pesquisa(pos,input){
+        //caminho do servidor,  alterar com o local do servidor http
+        let servidor = 'http://localhost:4445/server.php';
+        //pega o valor atual do imput
+        let valor_atual = document.getElementById(input).value;
+        let url = `${servidor}?value=${valor_atual}`;
+        //func(endereço da pagina ,nome do id do div a ser preenchido, função a ser chamada)
+        json_fetch(url,pos,json_pesquisa);
+    };
+    function c_conteudo(){
+        //pega o valor atual do imput
+        let value = document.getElementById('pesquisa').value;
+        console.log(value);
+        
+        let servidor = 'http://localhost:45/server_db.php';
+
+        let url= `${servidor}?value=${value}`;
+        carrega_conteudo(url);
+       document.getElementById('result_keys').innerHTML = '';
+    }
+
+</script>
+</html>

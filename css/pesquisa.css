@@ -1,0 +1,27 @@
+.pesquisa{
+    background-color: azure;
+    border: 3px solid black;
+    width:fit-content;
+
+}
+.pesquisa input {
+    border: none;
+  }
+  
+.pesquisa button {
+    border: none;
+    padding: 4px 10px;
+  }
+
+
+.pesquisa_out{
+    background-color: white;
+    /* width: 100%; */
+    position: fixed;
+    top: 0px auto ;
+    margin: 0px;
+    /* transform: translate3d(0px, 45px, 0px); */
+    /* z-index: 5050; */
+    width: 20%;
+    display: grid;
+}
